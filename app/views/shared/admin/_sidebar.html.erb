@@ -1,0 +1,21 @@
+<aside class="ls-sidebar">
+  <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+    <a href="#" class="ls-ico-user">
+      <%= current_admin_user.name %>
+      <small><%= current_admin_user.name.downcase.split(' ').join('.') %></small>
+    </a>
+    <nav class="ls-dropdown-nav ls-user-menu">
+      <ul>
+        <li><%= link_to(t('.logout'), admin_logout_url) %></li>
+      </ul>
+    </nav>
+  </div>
+
+  <nav class="ls-menu">
+    <ul>
+      <li>
+        <%= link_to(t('.scheduled_massages'), admin_schedule_index_path, class: 'ls-ico-book') %>
+      </li>
+    </ul>
+  </nav>
+</aside>

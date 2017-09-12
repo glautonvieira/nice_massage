@@ -1,0 +1,71 @@
+pt:
+  shared:
+    admin:
+      topbar:
+        massage_scheduling: Agendamento de massagem
+        logout: Sair
+      sidebar:
+        scheduled_massages: Massagens agendadas
+        logout: Sair
+    panel:
+      topbar:
+        massage_scheduling: Agendamento de massagem
+        logout: Sair
+      sidebar:
+        my_appointments: Meus agendamentos
+        schedule_massage_appointment: Agendar massagem
+        logout: Sair
+  admin:
+    schedule:
+      index:
+        scheduled_massages: Massagens agendadas
+        date: Data
+        filter: Filtrar
+        scheduled: Agendado
+        attended: Compareceu
+        missed: Não compareceu
+        user: Usuário
+        timetable: Horário
+        masseur: Massagista
+        actions: Ações
+        status: Situação
+        free_timetable: Horário livre
+        placeholder: dd/mm/aaaa
+        select_valid_date: 'Por favor, selecione uma data válida.'
+      update_appointment_status:
+        attended: Compareceu
+        missed: Não compareceu
+      confirm_presence:
+        appointment_not_found: Massagem não encontrada.
+      confirm_absence:
+        appointment_not_found: Massagem não encontrada.
+  panel:
+    appointments:
+      index:
+        my_appointments: Meus agendamentos
+        next_massage: Próxima massagem
+        no_appointments_scheduled: Você não possui nenhum agendamento recente.
+        no_appointments_historical_yet: Você ainda não tem nenhum agendamento em seu histórico.
+        appointments_historical: Histórico de agendamentos
+        massage_date_and_hour: Dia/Hora
+        situation: Situação
+        pending: Pendente
+        scheduled: Agendada
+        attended: Compareceu
+        missed: Não compareceu
+        cancel: Cancelar
+        confirm_cancellation: "Tem certeza que deseja cancelar a massagem selecionada?"
+      create:
+        massage_has_been_scheduled: Massagem agendada com sucesso!
+      new:
+        the_schedule_is_closed: O agendamento está fechado.
+        schedule_rules: "Os agendamentos ocorrem <b>terça</b>, <b>quinta</b> ou <b>sexta-feira</b>, a partir das <b>14h30</b>.<br>Por favor, tente novamente em outro horário."
+        timetable_availability_for: "Horários disponíveis para:"
+        timetable_at_date: "%{timetable}"
+        schedule_massage: Agendar massagem
+        available_appointments: Vagas disponíveis
+        massage_date_and_hour: Hora
+      destroy:
+        cancelled: Agendamento excluído com sucesso!
+        cannot_cancel: O agendamento deve ser cancelado com até 30 minutos de antecedência.
+        appointment_not_found: Agendamento não encontrado.
