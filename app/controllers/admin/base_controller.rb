@@ -2,33 +2,22 @@ module Admin
   class BaseController < ApplicationController
     layout 'admin'
 
-    before_action :authentication, :authorization
+    helper_method :current_user
 
-    helper_method :current_admin_user
-    attr_reader :current_admin_user
-
-    def authentication
-      CASClient::Frameworks::Rails::Filter.filter(self)
-    end
-
-    def authorization
-      return if session[:cas_user].nil?
-
-      if admin?
-        @current_admin_user = admin_user_session
-      else
-        CASClient::Frameworks::Rails::Filter.logout(self, root_url)
-      end
+    def current_user
+      @current_user ||= mocked_user
     end
 
     private
 
-    def admin_user_session
-      @admin_user_session ||= Sessions::AdminUserSession.new(session)
-    end
+    def mocked_user
+      user = User.find_by(name: 'Jackie Chan')
+      return user unless user.nil?
 
-    def admin?
-      admin_user_session.admin?
+      user = User.create(
+        name: 'Jackie Chan',
+        email: 'jackie@chan.com'
+      )
     end
   end
 end

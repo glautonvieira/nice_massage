@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :massages, dependent: :destroy
 
-  validates_presence_of :login, :name, :email
+  validates_presence_of :name, :email
 
   def self.retrieve_from(user_session)
     find_or_create_by!(
