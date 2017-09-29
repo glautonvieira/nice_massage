@@ -1,10 +1,12 @@
 module Panel
-  class AppointmentsController < Panel::BaseController
+  class AppointmentsController < ApplicationController
     def index
+      check_if_logged
       @appointments_presenter = AppointmentsPresenter.new(current_user)
     end
 
     def create
+      check_if_logged
       @massage = schedule_massage
       if @massage.persisted?
         flash[:notice] = t('.massage_has_been_scheduled')
@@ -16,6 +18,7 @@ module Panel
     end
 
     def new
+      check_if_logged
       return unless schedule_is_open
 
       @massage_date = date_finder.massage_date
@@ -24,6 +27,7 @@ module Panel
     end
 
     def destroy
+      check_if_logged
       appointment = Massage.find(params[:id])
       if appointment.cancel!
         flash[:notice] = t('.cancelled')
@@ -37,6 +41,10 @@ module Panel
     end
 
     private
+
+    def check_if_logged
+      redirect_to '/' if !current_user
+    end
 
     def schedule_is_open
       @schedule_is_open ||= \

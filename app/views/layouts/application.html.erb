@@ -1,14 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>HappyMassage</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html class="ls-theme-light-red">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
-<%= yield %>
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Agendamento de massagem</title>
 
-</body>
+    <link rel="stylesheet" type="text/css" href="http://assets.locaweb.com.br/locastyle/3.8.1/stylesheets/locastyle.css">
+  </head>
+
+  <body>
+    <% if current_user %>
+
+    <%= render partial: 'shared/panel/topbar' %>
+    <main class="ls-main ">
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </main>
+    <%= render partial: 'shared/panel/sidebar' %>
+
+    <% else %>
+    <%= yield %>
+    <% end %>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="http://assets.locaweb.com.br/locastyle/3.8.1/javascripts/locastyle.js"></script>
+  </body>
 </html>

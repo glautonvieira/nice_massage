@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
-  root to: 'panel/appointments#index'
+
+  # new routes
+  get 'sessions/create'
+  get 'sessions/destroy'
+  get 'welcome/show'
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :sessions, only: [:create, :destroy]
+  resource :welcome, only: [:show]
+
+  root to: "welcome#show"
+
+
+
+# old routes
+
+  # root to: 'panel/appointments#index'
 
   namespace :panel do
     get 'appointments' => 'appointments#index'
