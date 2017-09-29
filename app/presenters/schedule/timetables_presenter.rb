@@ -1,12 +1,16 @@
 module Schedule
   class TimetablesPresenter
+    def initialize(massage_date = nil)
+      @massage_date = massage_date
+    end
+
     def available_timetables
       available_timetables = []
 
       schedule_table.each do |timetable|
         massages_left = enabled_masseurs - scheduled_massages[timetable].to_i
         next if massages_left.zero?
-
+        next if timetable <= Time.now
         available_timetables << [timetable, massages_left]
       end
       available_timetables
@@ -29,7 +33,7 @@ module Schedule
     end
 
     def schedule_table
-      Rails.cache.fetch(cache_key, expires_in: 10.minutes) do
+      Rails.cache.fetch("#{massage_date}/schedule_table", expires_in: 10.minutes) do
         Schedule::TableGenerator.new(massage_date).schedule_table
       end
     end

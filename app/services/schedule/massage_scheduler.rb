@@ -3,6 +3,7 @@ module Schedule
     def initialize(args)
       @timetable = args.fetch(:timetable, nil)
       @user = args.fetch(:user)
+
       @massage = Massage.new(
         timetable: @timetable, user: @user, location: location
       )

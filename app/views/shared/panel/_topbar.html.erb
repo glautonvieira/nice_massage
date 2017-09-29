@@ -2,7 +2,7 @@
   <div class="ls-notification-topbar">
     <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
       <a href="#" class="ls-ico-user">
-        <%= current_user.name %>
+        <%= current_user.name.split(' ').first %>
         <small>(<%= current_user.email %>)</small>
       </a>
       <nav class="ls-dropdown-nav ls-user-menu">
