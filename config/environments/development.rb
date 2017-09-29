@@ -37,7 +37,11 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   config.after_initialize do
+<<<<<<< HEAD
     Timecop.travel(Time.zone.parse('2017-09-22 15:00'))
+=======
+    Timecop.travel(Time.zone.parse('2017-09-29 10:00'))
+>>>>>>> a3f0a52cd8749cfe7509a4f9bad6d6e876aceba5
   end
 
   # Raises error for missing translations

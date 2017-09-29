@@ -6,7 +6,7 @@
     </a>
     <nav class="ls-dropdown-nav ls-user-menu">
       <ul>
-        <li><%= link_to(t('.logout'), panel_logout_url) %></li>
+        <li><%= link_to "Sair", signout_path, id: "sign_out" %></li>
       </ul>
     </nav>
   </div>
@@ -14,7 +14,7 @@
   <nav class="ls-menu">
     <ul>
       <li>
-        <%= link_to(t('.my_appointments'), root_path, class: 'ls-ico-calendar') %>
+        <%= link_to(t('.my_appointments'), panel_appointments_path, class: 'ls-ico-calendar') %>
       </li>
       <li>
         <%= link_to(t('.schedule_massage_appointment'), panel_appointments_new_path, class: 'ls-ico-calendar-more') %>
