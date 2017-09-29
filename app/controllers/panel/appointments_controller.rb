@@ -20,10 +20,8 @@ module Panel
     def new
       check_if_logged
       return unless schedule_is_open
-
-      @massage_date = date_finder.massage_date
-      @available_timetables = available_timetables
       @massage = Massage.new
+      @massage_dates = date_finder.massage_dates
     end
 
     def destroy
@@ -47,16 +45,17 @@ module Panel
     end
 
     def schedule_is_open
-      @schedule_is_open ||= \
-        Schedule::Checker.new(Time.zone.now).schedule_is_open?
+      # @schedule_is_open ||= \
+      #   Schedule::Checker.new(Time.zone.now).schedule_is_open?
+      @schedule_is_open = true
     end
 
     def date_finder
       Schedule::MassageDateFinder.new(Time.zone.today)
     end
 
-    def available_timetables
-      Schedule::TimetablesPresenter.new.available_timetables
+    def available_timetables(date)
+      Schedule::TimetablesPresenter.new(date).available_timetables
     end
 
     def schedule_massage

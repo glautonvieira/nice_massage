@@ -12,12 +12,21 @@ module Schedule
       end
     end
 
+    def massage_dates
+      @massage_dates ||= begin
+        (@schedule_date..(@schedule_date + 5.days)).select do |date|
+          mday = massage_day_given_a_day_with_schedule(date.strftime('%A'))
+          mday == date.strftime('%A')
+        end.take(2)
+      end
+    end
+
     private
 
     def remaining_days_for_massage
       massage_wday = massage_wday(massage_day)
       diff = massage_wday - @schedule_date.wday
-      diff > 0 ? diff.days : (7 + diff).days
+      diff >= 0 ? diff.days : (7 + diff).days
     end
 
     def massage_day

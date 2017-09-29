@@ -18,16 +18,16 @@ class TimetableValidator < ActiveModel::EachValidator
 
   def validate_schedule_table_contains_timetable(record, attribute, value)
     return if record.errors[attribute].any?
-    return if massage_date.present? && schedule_table.include?(value)
+    return if value.present? && schedule_table(value).include?(value)
 
     record.errors.add(attribute, :timetable_is_out_of_range)
   end
 
-  def schedule_table
+  def schedule_table(massage_date)
     Schedule::TableGenerator.new(massage_date).schedule_table
   end
 
-  def massage_date
-    Schedule::MassageDateFinder.new(Time.zone.today).massage_date
-  end
+  #def massage_date
+  #  Schedule::MassageDateFinder.new(Time.zone.today).massage_date
+  #end
 end
