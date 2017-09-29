@@ -5,6 +5,7 @@ gem 'rails', '4.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'uglifier', '>= 1.3.0'
+gem 'rails_12factor'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
