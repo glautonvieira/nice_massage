@@ -2,10 +2,11 @@ module Admin
   class BaseController < ApplicationController
     layout 'admin'
 
-    helper_method :current_user
+    helper_method :check_flag_admin
+    before_action :check_flag_admin
 
-    def current_user
-      @current_user ||= mocked_user
+    def check_flag_admin
+      redirect_to '/' unless (current_user && current_user.is_admin?)
     end
 
     private

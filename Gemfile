@@ -23,6 +23,10 @@ gem 'rubycas-client'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# google auth
+gem "omniauth-google-oauth2", "~> 0.2.1"
+
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
