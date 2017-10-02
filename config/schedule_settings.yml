@@ -4,15 +4,15 @@ development: &default
   massage_end: '18:00'
   time_to_open_schedule: '00:05'
   location: Sala Quick Massage
-  pauses: [['10:30', '10:45'], ['12:00', '13:00'], ['16:30', '16:45']]
+  pauses: [['12:00', '12:45']]
   massage_day_given_a_day_with_schedule:
     Friday: Friday
     Saturday: Monday
     Sunday: Monday
     Monday: Monday
-    Tuesday: Wednesday
-    Wednesday: Wednesday
-    Thursday: Friday
+    Tuesday: Thursday
+    Wednesday: Thursday
+    Thursday: Thursday
 
 test:
   <<: *default
