@@ -17,7 +17,7 @@ module Schedule
         (@schedule_date..(@schedule_date + 5.days)).select do |date|
           mday = massage_day_given_a_day_with_schedule(date.strftime('%A'))
           mday == date.strftime('%A')
-        end.take(2)
+        end.take(3)
       end
     end
 
